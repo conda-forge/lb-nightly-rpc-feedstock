@@ -1,5 +1,5 @@
 {% set name = "lb-nightly-rpc" %}
-{% set version = "0.1.4" %}
+{% set version = "0.2.1" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/lb-nightly-rpc-{{ version }}.tar.gz
-  sha256: a14826a7441021dffd11cd4ca10383712d4512cf0b137328618dffbb9854085d
+  sha256: 745115e3d81376162081ae44baab9ff1dc4a460be9294c3baaa2d6aa7289f872
 
 build:
   number: 0
@@ -22,10 +22,11 @@ requirements:
     - python >=3.8,<4.0
   run:
     - celery >=5.1.2,<6.0.0
-    - lb-nightly-configuration >=0.2,<0.3
+    - lb-nightly-configuration >=0.3,<1.0
     - lbplatformutils >=4.3.6,<5.0.0
     - mysqlclient >=2.0.3,<3.0.0
     - python >=3.8,<4.0
+    - requests >=2.28,<3.0.0
 
 test:
   imports:

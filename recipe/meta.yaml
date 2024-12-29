@@ -7,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/lb-nightly-rpc-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/lb-nightly-rpc-{{ version }}.tar.gz
   sha256: 745115e3d81376162081ae44baab9ff1dc4a460be9294c3baaa2d6aa7289f872
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
   noarch: python
 
@@ -19,13 +19,13 @@ requirements:
   host:
     - pip
     - poetry-core >=1.0.0
-    - python >=3.8,<4.0
+    - python {{ python_min }}
   run:
     - celery >=5.1.2,<6.0.0
     - lb-nightly-configuration >=0.3,<1.0
     - lbplatformutils >=4.3.6,<5.0.0
     - mysqlclient >=2.0.3,<3.0.0
-    - python >=3.8,<4.0
+    - python >={{ python_min }},<4.0
     - requests >=2.28,<3.0.0
 
 test:
@@ -36,6 +36,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://pypi.org/project/lb-nightly-rpc/
